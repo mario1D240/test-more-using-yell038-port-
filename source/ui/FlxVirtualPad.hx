@@ -28,6 +28,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 {
 	public var buttonA:FlxButton;
 	public var buttonB:FlxButton;
+	public var buttonB2:FlxButton;
 	public var buttonC:FlxButton;
 	public var buttonY:FlxButton;
 	public var buttonX:FlxButton;
@@ -103,6 +104,8 @@ class FlxVirtualPad extends FlxSpriteGroup
 		{
 			case A:
 				actions.add(add(buttonA = createButton(FlxG.width - 44 * 3, FlxG.height - 45 * 3, 44 * 3, 45 * 3, "a")));
+			case B2:
+				actions.add(add(buttonB = createButton(0, 0, 44 * 3, 45 * 3, "b")));
 			case A_B:
 				actions.add(add(buttonA = createButton(FlxG.width - 44 * 3, FlxG.height - 45 * 3, 44 * 3, 45 * 3, "a")));
 				actions.add(add(buttonB = createButton(FlxG.width - 86 * 3, FlxG.height - 45 * 3, 44 * 3, 45 * 3, "b")));
@@ -130,6 +133,7 @@ class FlxVirtualPad extends FlxSpriteGroup
 		actions = null;
 		buttonA = null;
 		buttonB = null;
+		buttonB2 = null;
 		buttonC = null;
 		buttonY = null;
 		buttonX = null;
@@ -206,6 +210,7 @@ enum FlxActionMode
 {
 	NONE;
 	A;
+	B2;
 	A_B;
 	A_B_C;
 	A_B_X_Y;

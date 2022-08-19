@@ -12,7 +12,6 @@ import flixel.util.FlxDestroyUtil;
 import flixel.ui.FlxButton;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.frames.FlxFrame;
-import flixel.ui.FlxVirtualPad;
 import flixel.tweens.FlxTween;
 import flixel.tweens.FlxEase;
 

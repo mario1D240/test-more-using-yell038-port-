@@ -41,7 +41,7 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
-#if mobile
+#if html5
 import mobilecontrols.Mobilecontrols;
 #end
 
@@ -123,6 +123,8 @@ class PlayState extends MusicBeatState
 
 	var defaultCamZoom:Float = 1.05;
 
+	public var songMisses:Int = 0;
+
 	// how big to stretch the pixel art assets
 	public static var daPixelZoom:Float = 6;
 
@@ -138,7 +140,7 @@ class PlayState extends MusicBeatState
 	#end
 
 	
-	#if mobile
+	#if html5
 	var mcontrols:Mobilecontrols; 
 	#end
 
@@ -746,8 +748,9 @@ class PlayState extends MusicBeatState
 
 
 		// mobile controls here!!!
-		#if mobile
+		#if html5
 		mcontrols = new Mobilecontrols();
+
 		var camcontrol = new FlxCamera();
 		FlxG.cameras.add(camcontrol);
 		camcontrol.bgColor.alpha = 0;
@@ -771,7 +774,7 @@ class PlayState extends MusicBeatState
 		add(healthBar);
 
 		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
-		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT);
+		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
 
@@ -1401,7 +1404,7 @@ class PlayState extends MusicBeatState
 
 		super.update(elapsed);
 
-		scoreTxt.text = "Score:" + songScore;
+		scoreTxt.text = 'Score: ' + songScore + ' | Misses: ' + songMisses;
 
 		#if android
 		var enterPressed = FlxG.keys.justPressed.ENTER || FlxG.android.justReleased.BACK;
@@ -1993,7 +1996,7 @@ class PlayState extends MusicBeatState
 	{
 		// HOLDING
 
-		#if mobile
+		#if html5
 
 		var up = mcontrols.UP;
 		var right = mcontrols.RIGHT;
@@ -2213,7 +2216,8 @@ class PlayState extends MusicBeatState
 				gf.playAnim('sad');
 			}
 			combo = 0;
-
+			
+			songMisses++;
 			songScore -= 10;
 
 			FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
@@ -2246,7 +2250,7 @@ class PlayState extends MusicBeatState
 	{
 		// just double pasting this shit cuz fuk u
 		// REDO THIS SYSTEM!
-		#if mobile
+		#if html5
 
 		var upP = mcontrols.UP_P;
 		var rightP = mcontrols.RIGHT_P;
