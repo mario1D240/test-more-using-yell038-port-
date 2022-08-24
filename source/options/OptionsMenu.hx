@@ -28,7 +28,7 @@ class OptionsMenu extends MusicBeatState
 
 	private var grpControls:FlxTypedGroup<Alphabet>;
 
-	var menuItems:Array<String> = ['controls', 'downscroll: off', 'About'];
+	var menuItems:Array<String> = ['controls', 'downscroll: off', 'Debug Menu', 'About'];
 
 	var _pad:FlxVirtualPad;
 
@@ -115,6 +115,9 @@ class OptionsMenu extends MusicBeatState
 				case "ghost tapping: on" | "ghost tapping: off":
 					config.setghosttapping();
 					FlxG.resetState();
+
+				case "Debug Menu":
+					FlxG.switchState(new ChartingState());
 				
 				case "About":
 					FlxG.switchState(new options.AboutState());

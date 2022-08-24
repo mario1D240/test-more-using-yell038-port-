@@ -190,7 +190,7 @@ class ChartingState extends MusicBeatState
         key_shift.alpha = 0.75;
         add(key_shift);
 
-		_pad = new FlxVirtualPad(RIGHT_FULL, NONE);
+		_pad = new FlxVirtualPad(FULL, A_B);
     	_pad.alpha = 0.75;
     	this.add(_pad);
 
@@ -572,7 +572,7 @@ class ChartingState extends MusicBeatState
 		var androidback = false;
 		#end
 
-		if (FlxG.keys.justPressed.ENTER || androidback)
+		if (FlxG.keys.justPressed.ENTER || _pad.buttonA.pressed)
 		{
 			FlxG.mouse.visible = false;
 			lastSection = curSection;
@@ -582,6 +582,10 @@ class ChartingState extends MusicBeatState
 			vocals.stop();
 			FlxG.switchState(new PlayState());
 		}
+		if (FlxG.keys.justPressed.BACKSPACE || _pad.buttonB.pressed)
+			{
+				FlxG.switchState(new options.OptionsMenu());
+			}
 
 		if (FlxG.keys.justPressed.E)
 		{
