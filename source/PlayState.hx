@@ -2434,6 +2434,23 @@ class PlayState extends MusicBeatState
 		{
 			// dad.dance();
 		}
+		
+		/* These are some basic mid-song events. REMOVE THIS TEXT!
+
+		switch (curSong) {
+			case 'yoursonghere':
+				switch (curStep) {
+					case 128: //This is the curStep found in the Debug Menu. This is how events are timed.
+
+						//Camera zoom
+						defaultCamZoom = 1.2; 
+
+						//Change Character
+						remove(dad); //values are dad, bf, gf
+						dad = new Character(100, 100 'yourcharacter');
+						add(dad);
+				}
+		} Remove this when you're done. > */ 
 	}
 
 	var lightningStrikeBeat:Int = 0;
