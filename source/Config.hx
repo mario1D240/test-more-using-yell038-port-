@@ -27,6 +27,18 @@ class Config {
         return false;
     }
 
+	public function setghosttapping(?value:Bool):Bool {
+		if (save.data.isghosttapping == null) save.data.isghosttapping = false;
+		save.data.isghosttapping = !save.data.isghosttapping;
+		save.flush();
+        return save.data.isghosttapping;
+	}
+
+	public function getghosttapping():Bool {
+        if (save.data.isghosttapping != null) return save.data.isghosttapping;
+        return false;
+    }
+
     public function getcontrolmode():Int {
         // load control mode num from FlxSave
 		if (save.data.buttonsmode != null) return save.data.buttonsmode[0];

@@ -146,6 +146,7 @@ class PlayState extends MusicBeatState
 
 	var config:Config = new Config();
 	var downscroll_isenabled:Bool = false;
+	var ghosttapping_isenabled:Bool = false;
 
 	override public function create()
 	{
@@ -154,8 +155,9 @@ class PlayState extends MusicBeatState
 
 
 		// part of mobile controls in 750 line
-		// get downscroll settings
+		// get downscroll and ghost tapping settings
 		downscroll_isenabled = config.getdownscroll();
+		ghosttapping_isenabled = config.getghosttapping();
 
 
 		// var gameCam:FlxCamera = FlxG.camera;

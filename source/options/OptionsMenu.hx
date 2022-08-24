@@ -59,6 +59,10 @@ class OptionsMenu extends MusicBeatState
 			menuItems[menuItems.indexOf('downscroll: off')] = 'downscroll: on';
 		}
 
+		if (config.getghosttapping()){
+			menuItems[menuItems.indexOf('ghost tapping: off')] = 'ghost tapping: on';
+		}
+
 		for (i in 0...menuItems.length)
 		{ 
 			var controlLabel:Alphabet = new Alphabet(0, (70 * i) + 30, menuItems[i], true, false);
@@ -106,6 +110,10 @@ class OptionsMenu extends MusicBeatState
 				
 				case "downscroll: on" | "downscroll: off":
 					config.setdownscroll();
+					FlxG.resetState();
+
+				case "ghost tapping: on" | "ghost tapping: off":
+					config.setghosttapping();
 					FlxG.resetState();
 				
 				case "About":
