@@ -142,6 +142,7 @@ class PlayState extends MusicBeatState
 	
 	#if html5
 	var mcontrols:Mobilecontrols; 
+	var _pad:ui.FlxVirtualPad;
 	#end
 
 	var config:Config = new Config();
@@ -759,6 +760,14 @@ class PlayState extends MusicBeatState
 		mcontrols.cameras = [camcontrol];
 
 		add(mcontrols);
+
+		_pad = new ui.FlxVirtualPad(NONE, B2);
+		_pad.alpha = 0.75;
+
+		_pad.cameras = [camcontrol];
+
+		add(_pad);
+
 		#end
 
 		var ybar:Float = downscroll_isenabled ? FlxG.height * 0.1 : FlxG.height * 0.9;
@@ -1414,7 +1423,7 @@ class PlayState extends MusicBeatState
 		var enterPressed = FlxG.keys.justPressed.ENTER;
 		#end
 
-		if (enterPressed && startedCountdown && canPause)
+		if ((_pad.buttonB2.justPressed || enterPressed) && startedCountdown && canPause)
 		{
 			persistentUpdate = false;
 			persistentDraw = true;
